@@ -26,13 +26,29 @@ export let accounts = [
 export let accountsTransfers = [
   {
     pinNumber: 1234,
+    balance: "5000",
+    name: "Muhammad Fathy Abozaid",
     transfers: [
       {
         id: 1,
         history: "",
         time: "",
-        price: "25",
-        operation: "",
+        price: -500,
+        operationType: "transfer",
+      },
+      {
+        id: 2,
+        history: "",
+        time: "",
+        price: 5000,
+        operationType: "save",
+      },
+      {
+        id: 3,
+        history: "",
+        time: "",
+        price: -50,
+        operationType: "withdraw",
       },
     ],
   },

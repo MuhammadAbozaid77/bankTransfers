@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
-import CloseAccountCard from "./CloseAccountCard";
-import DetailsHeader from "./DetailsHeader";
-import LogooutTime from "./LogooutTime";
-import RequestloanCard from "./RequestloanCard";
-import TransferMoneyCard from "./TransferMoneyCard";
-import TransfersDetailsFooter from "./TransfersDetailsFooter";
-import TransfersRow from "./TransfersRow";
-import Wrapper from "./Wrapper";
-import { accountsTransfers } from "../accounts";
-import NoTransfers from "./NoTransfers";
+import CloseAccountCard from "../CloseAccountCard";
+import DetailsHeader from "../DetailsHeader";
+import LogooutTime from "../LogooutTime";
+import RequestloanCard from "../RequestloanCard";
+import TransferMoneyCard from "../TransferMoneyCard";
+import TransfersDetailsFooter from "../TransfersDetailsFooter";
+import TransfersRow from "../TransfersRow";
+import Wrapper from "../Wrapper";
+import { accountsTransfers } from "../../accounts";
+import NoTransfers from "../NoTransfers";
 
 export default function Details({ pin }) {
-
   const [accountData, setAccountData] = useState({});
   const findAccountDate = () => {
     const data = accountsTransfers?.find((item) => {
@@ -27,7 +26,6 @@ export default function Details({ pin }) {
   useEffect(() => {
     findAccountDate();
   }, [pin]);
-
 
   return (
     <Wrapper classesName={"mb-4"}>

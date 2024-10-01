@@ -31,7 +31,7 @@ export default function Home({ pin }) {
       <div className="col-span-3">
         <DetailsHeader />
       </div>
-      <div className="border rounded-md shadow-md p-2 lg:col-span-2 col-span-3">
+      <div className="border rounded-md shadow-md p-2 col-span-3">
         {accountData?.transfers?.length > 0 ? (
           accountData?.transfers?.map((el) => (
             <TransfersRow key={el?.id} el={el} />
@@ -39,12 +39,6 @@ export default function Home({ pin }) {
         ) : (
           <NoTransfers />
         )}
-      </div>
-
-      <div className=" flex flex-col gap-5 lg:col-span-1 col-span-3">
-        <TransferMoneyCard />
-        <RequestloanCard />
-        <CloseAccountCard />
       </div>
 
       <div className="lg:col-span-2 col-span-3">

@@ -1,53 +1,46 @@
-import { useEffect, useState } from "react";
-import CloseAccountCard from "../components/CloseAccountCard";
 import DetailsHeader from "../components/DetailsHeader";
-import RequestloanCard from "../components/RequestloanCard";
-import TransferMoneyCard from "../components/TransferMoneyCard";
 import TransfersDetailsFooter from "../components/TransfersDetailsFooter";
 import TransfersRow from "../components/TransfersRow";
 import NoTransfers from "../components/ui/NoTransfers";
 import LogOutTime from "../components/LogOutTime";
-import { accountsTransfers } from "../accounts";
+import { PiHandWavingFill } from "react-icons/pi";
+import useGetHomeData from "../hooks/useGetHomeData";
 
-export default function Home({ pin }) {
-  const [accountData, setAccountData] = useState({});
-  const findAccountDate = () => {
-    const data = accountsTransfers?.find((item) => {
-      return item.pinNumber === pin;
-    });
-    if (data) {
-      setAccountData(data);
-    } else {
-      setAccountData({});
-    }
-  };
-
-  useEffect(() => {
-    findAccountDate();
-  }, [pin]);
+export default function Home() {
+  const { name, transfers, balance } = useGetHomeData();
+  console.log("rransfers", transfers);
 
   return (
-    <main className="mx-auto grid grid-cols-3 gap-8 border p-10 rounded-lg shadow-lg w-[100%]">
-      <div className="col-span-3">
-        <DetailsHeader />
-      </div>
-      <div className="border rounded-md shadow-md p-2 col-span-3">
-        {accountData?.transfers?.length > 0 ? (
-          accountData?.transfers?.map((el) => (
-            <TransfersRow key={el?.id} el={el} />
-          ))
-        ) : (
-          <NoTransfers />
-        )}
-      </div>
+    <>
+      <main className="mx-auto grid grid-cols-3 gap-5 border p-10 rounded-lg shadow-lg w-[100%]">
+        <div className="col-span-3">
+          <h1 className="mb-5 font-bold text-[20px] flex items-center gap-2">
+            <PiHandWavingFill size={30} className="text-red-500" />
+            <span> Welcome Back </span>
+            <span className="font-semibold text-red-500">
+              {name?.split(" ")[0]}
+            </span>
+          </h1>
+        </div>
+        <div className="col-span-3">
+          <DetailsHeader balance={balance} />
+        </div>
+        <div className="border rounded-md shadow-md p-2 col-span-3">
+          {transfers?.length > 0 ? (
+            transfers?.map((el) => <TransfersRow key={el?.id} el={el} />)
+          ) : (
+            <NoTransfers />
+          )}
+        </div>
 
-      <div className="lg:col-span-2 col-span-3">
-        <TransfersDetailsFooter />
-      </div>
+        <div className="lg:col-span-2 col-span-3">
+          <TransfersDetailsFooter />
+        </div>
 
-      <div className="lg:col-span-1 col-span-3">
-        <LogOutTime />
-      </div>
-    </main>
+        <div className="lg:col-span-1 col-span-3">
+          <LogOutTime />
+        </div>
+      </main>
+    </>
   );
 }

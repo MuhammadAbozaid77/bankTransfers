@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Logo from "./Logo";
+import Logo from "../components/layout/Logo";
 import { accounts } from "../accounts";
-import SpinnerLoading from "./SpinnerLoading";
-import Error from "./Error";
+import SpinnerLoading from "../components/ui/SpinnerLoading";
+import Error from "../components/ui/Error";
 
 export default function Login({
   setIsAuth,

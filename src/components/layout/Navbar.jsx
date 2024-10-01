@@ -1,5 +1,5 @@
 import Logo from "./Logo";
-import Wrapper from "./Wrapper";
+import Wrapper from "../Wrapper";
 
 export default function Navbar({ setIsAuth }) {
   const handelLogout = () => {

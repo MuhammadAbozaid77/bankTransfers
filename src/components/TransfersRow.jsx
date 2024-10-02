@@ -4,7 +4,7 @@ export default function TransfersRow({ el }) {
   return (
     <>
       <div className="rounded-lg overflow-auto">
-        <div className="flex items-center border-b border-gray-200 p-9">
+        <div className="flex items-center border-b border-gray-300 p-9">
           <div
             className={` text-white font-semibold text-md uppercase text-center py-2 px-4 rounded-full mr-8  w-[100px] ${
               el?.operationType === "transfer"

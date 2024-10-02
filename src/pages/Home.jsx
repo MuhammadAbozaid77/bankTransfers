@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="mx-auto grid grid-cols-3 gap-5 border p-10 rounded-lg shadow-lg w-[100%]">
+      <main className="mx-auto grid grid-cols-3 gap-5 border border-gray-300 p-10 rounded-lg shadow-lg w-[100%] bg-gradient-to-tl from-gray-100 to-gray-50">
         <div className="col-span-3">
           <h1 className="mb-5 font-bold text-[20px] flex items-center gap-2">
             <PiHandWavingFill size={30} className="text-red-500" />
@@ -25,7 +25,7 @@ export default function Home() {
         <div className="col-span-3">
           <DetailsHeader balance={balance} />
         </div>
-        <div className="border rounded-md shadow-md p-2 col-span-3">
+        <div className="border-[1px] border-gray-300 rounded-md shadow-lg px-2 py-5 col-span-3">
           {transfers?.length > 0 ? (
             transfers?.map((el) => <TransfersRow key={el?.id} el={el} />)
           ) : (

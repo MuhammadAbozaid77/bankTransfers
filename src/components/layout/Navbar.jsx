@@ -1,34 +1,10 @@
 import Logo from "./Logo";
 import Wrapper from "../ui/Wrapper";
 import { NavLink } from "react-router-dom";
+import { links } from "../../services/navbarLinks";
+import LogoutButton from "./LogoutButton";
 
-export default function Navbar({ setIsAuth }) {
-  const handelLogout = () => {
-    setIsAuth(false);
-  };
-
-  const links = [
-    {
-      name: "Home",
-      path: "/home",
-    },
-    {
-      name: "Transfer",
-      path: "/transfer",
-    },
-    {
-      name: "Request",
-      path: "/request",
-    },
-    {
-      name: "Help",
-      path: "/help",
-    },
-    {
-      name: "Find",
-      path: "/find",
-    },
-  ];
+export default function Navbar() {
   return (
     <Wrapper>
       <nav className="flex justify-between items-center border-b-[2px] border-gray-300 h-[100px]">
@@ -50,12 +26,7 @@ export default function Navbar({ setIsAuth }) {
           })}
         </div>
 
-        <button
-          onClick={handelLogout}
-          className="border rounded-lg bg-gray-600 hover:bg-gray-500 duration-200 font-bold py-2 px-5 text-[18px] text-white"
-        >
-          Logout
-        </button>
+        <LogoutButton />
       </nav>
     </Wrapper>
   );

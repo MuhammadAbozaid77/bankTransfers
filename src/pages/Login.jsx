@@ -3,40 +3,38 @@ import Logo from "../components/layout/Logo";
 import { accounts } from "../accounts";
 import SpinnerLoading from "../components/ui/SpinnerLoading";
 import Error from "../components/ui/Error";
+import { useNavigate } from "react-router-dom";
 
-export default function Login({
-  setIsAuth,
-  setIsError,
-  setIsLoading,
-  isLoading,
-  isError,
-  setAccountPinNmuber,
-}) {
-  const [userPinNumber, setUserPinNumber] = useState(0);
+export default function Login() {
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [userPinNumber, setUserPinNumber] = useState("");
   const [userPassword, setUserPassword] = useState("");
 
-  const handelLogin = (pin, pass) => {
+  const handelLogin = () => {
     setIsLoading(true);
     setTimeout(() => {
       const validate = accounts.find((item) => {
         return (
-          item?.pinNumber === Number(pin) && item?.password === String(pass)
+          item?.pinNumber === Number(userPinNumber) &&
+          item?.password === String(userPassword)
         );
       });
       if (validate === undefined) {
         setIsLoading(false);
         setIsError("Password Or Email Is Wrong");
       } else {
+        localStorage.setItem("bankTransfersAccount", userPinNumber);
         setIsLoading(false);
-        setIsAuth(true);
         setIsError("");
-        setAccountPinNmuber(Number(pin));
+        navigate("/home");
       }
     }, 2000);
   };
   const handelSubmit = (e) => {
     e.preventDefault();
-    handelLogin(userPinNumber, userPassword);
+    handelLogin();
   };
   return (
     <>

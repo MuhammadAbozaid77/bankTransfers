@@ -8,7 +8,7 @@ import useGetHomeData from "../hooks/useGetHomeData";
 
 export default function Home() {
   const { name, transfers, balance } = useGetHomeData();
-  console.log("rransfers", transfers);
+  // console.log("rransfers", transfers);
 
   return (
     <>

@@ -3,30 +3,53 @@ import { accountsTransfers } from "../accounts";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 
 export default function Transfer() {
-  const [userTransferPrice, setUserTransferPrice] = useState("");
+  const currentAccountLocalStorage = localStorage.getItem(
+    "bankTransfersAccount"
+  );
+
+  const [transferedPrice, setTransferedPrice] = useState("");
   const [userTransferPinNumber, setUserTransferPinNumber] = useState("");
+
+  const accountRecieveMoney = accountsTransfers.find((el) => {
+    return el?.pinNumber === Number(userTransferPinNumber);
+  });
+  const currentAccount = accountsTransfers.find((el) => {
+    return el?.pinNumber === Number(currentAccountLocalStorage);
+  });
+
+  console.log("currentAccount", currentAccount);
+  console.log("accountRecieveMoney", accountRecieveMoney);
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    const data = {
+    const sendedData = {
       id: 0,
       history: "",
       time: "",
-      price: Number(-userTransferPrice),
-      operationType: "transfer",
+      price: Number(-transferedPrice),
+      operationType: "send",
       userTransferPinNumber: userTransferPinNumber,
     };
-    console.log(data);
-    const checkBalance = accountsTransfers.find((el) => {
-      return el?.pinNumber === Number(userTransferPinNumber);
-    });
+    const transferedData = {
+      id: 0,
+      history: "",
+      time: "",
+      price: Number(transferedPrice),
+      operationType: "recieve",
+      userTransferPinNumber: userTransferPinNumber,
+    };
+
     if (
-      userTransferPrice > checkBalance?.balance &&
-      checkBalance?.balance === 0
+      transferedPrice > currentAccount?.balance ||
+      accountRecieveMoney?.balance === 0
     ) {
+      console.log("Cant send Money");
+
       return;
     } else {
-      checkBalance?.transfers?.push(data);
+      console.log("OKKKK send Money");
+      accountRecieveMoney?.transfers?.push(transferedData);
+      currentAccount?.transfers?.push(sendedData);
     }
   };
 
@@ -68,13 +91,13 @@ export default function Transfer() {
                 Price
               </label>
               <input
-                value={userTransferPrice}
+                value={transferedPrice}
                 type="number"
                 placeholder="Price"
                 name="pin"
                 id="pin"
                 className="p-5 rounded focus:outline-none text-[20px]"
-                onChange={(e) => setUserTransferPrice(e.target.value)}
+                onChange={(e) => setTransferedPrice(e.target.value)}
               />
             </div>
 

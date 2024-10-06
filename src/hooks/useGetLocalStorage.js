@@ -1,6 +1,6 @@
 export default function useGetLocalStorage() {
-  const getLocalStorage = localStorage.getItem("bankTransfersAccount");
-  const isAuthenticated = Boolean(getLocalStorage);
+  const localStoragetoken = localStorage.getItem("bankTransfersAccount");
+  const isAuthenticated = Boolean(localStoragetoken);
 
-  return { isAuthenticated };
+  return { isAuthenticated, localStoragetoken };
 }

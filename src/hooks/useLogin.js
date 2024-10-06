@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 export default function useLogin() {
   const navigate = useNavigate();
-  const { isLoading, setIsLoading, error, setError, checkAccountLoginIn } =
+  const { isLoading, setIsLoading, error, setError, checkAccountLogIn } =
     useContext(ContextValue);
 
   const handelLogin = (data) => {
     setIsLoading(true);
     setTimeout(() => {
-      const validate = checkAccountLoginIn(
+      const validate = checkAccountLogIn(
         Number(data?.pinNumber),
         String(data?.password)
       );

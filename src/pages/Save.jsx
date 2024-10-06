@@ -1,26 +1,30 @@
 import { IoIosSave } from "react-icons/io";
 import { useForm } from "react-hook-form";
+import useSaveMoney from "../hooks/useSaveMoney";
+import SpinnerLoading from "../components/ui/SpinnerLoading";
+import Error from "../components/ui/Error";
 
 export default function Save() {
+  const { checkAccountSaveMoneyByPinNumber, error, isLoading } = useSaveMoney();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  // console.log("errors", errors);
 
   const onSubmit = (data) => {
-    
-    console.log("Form data", data);
+    checkAccountSaveMoneyByPinNumber(data);
   };
 
   return (
     <>
-      <div className="min-h-[calc(100vh-200px)] w-[100%] flex justify-center items-center">
-        <div className="bg-gradient-to-tl from-green-600 to-green-500 rounded-lg overflow-hidden shadow-lg">
+      <div className="min-h-[calc(100vh-200px)] w-[100%] flex justify-center items-center flex-col">
+        {isLoading && <SpinnerLoading />}
+        {error && <Error error={error} />}
+        <div className=" rounded-lg overflow-hidden shadow-lg">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="w-[700px] p-[50px] bg-opacity-20 backdrop-blur-lg bg-white rounded-lg border border-white border-opacity-20 shadow-lg"
+            className="w-[700px] p-[50px]  bg-gradient-to-tl from-green-600 to-green-500 bg-opacity-20 backdrop-blur-lg bg-white rounded-lg border border-white border-opacity-20 shadow-lg"
           >
             <h1 className="mb-10 font-bold text-white rounded-md flex items-center gap-5">
               <IoIosSave size={45} className="text-gray-800" />

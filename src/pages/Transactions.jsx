@@ -6,7 +6,7 @@ import LogOutTime from "../components/LogOutTime";
 import { PiHandWavingFill } from "react-icons/pi";
 import useGetHomeData from "../hooks/useGetHomeData";
 
-export default function Home() {
+export default function Transactions() {
   const { name, transfers, balance } = useGetHomeData();
 
   return (

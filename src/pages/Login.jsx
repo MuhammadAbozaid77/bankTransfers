@@ -3,9 +3,19 @@ import SpinnerLoading from "../components/ui/SpinnerLoading";
 import Error from "../components/ui/Error";
 import useLogin from "../hooks/useLogin";
 import { useForm } from "react-hook-form";
+import useGetLocalStorage from "../hooks/useGetLocalStorage";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function Login() {
-  
+  const navigate = useNavigate();
+  const { isAuthenticated } = useGetLocalStorage();
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/home");
+    }
+  }, [isAuthenticated, navigate]);
+
   const {
     register,
     handleSubmit,

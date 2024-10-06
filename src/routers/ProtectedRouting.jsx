@@ -1,10 +1,10 @@
 import { Navigate } from "react-router-dom";
+import useGetLocalStorage from "../hooks/useGetLocalStorage";
 
 export default function ProtectedRouting({ children }) {
-  const isAuth = localStorage.getItem("bankTransfersAccount") || true;
-  // console.log("isAuth", isAuth);
+  const { isAuthenticated } = useGetLocalStorage();
 
-  if (isAuth) {
+  if (isAuthenticated) {
     return children;
   } else {
     return <Navigate to={"/login"} />;

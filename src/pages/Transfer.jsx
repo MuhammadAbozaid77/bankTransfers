@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { accountsTransfers } from "../accounts";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
+import { accountsTransfers } from "../services/accountsTransfers";
 
 export default function Transfer() {
   const currentAccountLocalStorage = localStorage.getItem(

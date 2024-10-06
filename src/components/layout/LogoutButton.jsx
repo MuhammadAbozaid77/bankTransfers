@@ -1,7 +1,15 @@
-import useLogOut from "../../hooks/useLogOut";
+import { useNavigate } from "react-router-dom";
+// import useLogOut from "../../hooks/useLogOut";
 
 export default function LogoutButton() {
-  const { handelLogout } = useLogOut();
+  const navigate = useNavigate();
+
+  // const { handelLogout } = useLogOut();
+
+  const handelLogout = () => {
+    localStorage.removeItem("bankTransfersAccount");
+    navigate("/login");
+  };
 
   return (
     <>

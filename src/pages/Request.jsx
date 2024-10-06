@@ -12,10 +12,10 @@ export default function Request() {
   return (
     <>
       <div className="min-h-[calc(100vh-200px)] w-[100%] flex justify-center items-center ">
-        <div className="bg-gradient-to-tl from-red-800 to-red-500 rounded-lg overflow-hidden shadow-lg">
+        <div className=" rounded-lg overflow-hidden shadow-lg">
           <form
             onSubmit={handelSubmit}
-            className="w-[700px] p-[50px] bg-opacity-20 backdrop-blur-lg bg-white rounded-lg border border-white border-opacity-20 shadow-lg"
+            className="w-[700px] p-[50px] bg-gradient-to-tl from-red-700 to-red-500  bg-opacity-20 backdrop-blur-lg bg-white rounded-lg border border-white border-opacity-20 shadow-lg"
           >
             <h1 className="mb-10 font-bold  text-white   rounded-md flex items-center gap-5">
               <FaMoneyBillTransfer size={35} className="text-gray-800" />
@@ -24,7 +24,7 @@ export default function Request() {
 
             <div className="flex flex-col justify-center   rounded-md mb-5">
               <label
-                className=" text-red-900 font-bold text-[20px]"
+                className=" text-white font-bold text-[20px]"
                 htmlFor="pin"
               >
                 PinNumber
@@ -41,7 +41,7 @@ export default function Request() {
             </div>
             <div className="flex flex-col justify-center   rounded-md mb-5">
               <label
-                className=" text-red-900 font-bold text-[20px]"
+                className=" text-white font-bold text-[20px]"
                 htmlFor="pin"
               >
                 Price

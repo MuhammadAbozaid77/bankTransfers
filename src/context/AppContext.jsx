@@ -8,7 +8,7 @@ export default function AppContext({ children }) {
   const [error, setError] = useState("");
 
   // ----------------- Check Login -----------------
-  const checkAccountLoginIn = (pin, pass) => {
+  const checkAccountLogIn = (pin, pass) => {
     const targetAuthAccount = accounts?.find((item) => {
       return item?.password === pass && item?.pinNumber === pin;
     });
@@ -17,7 +17,7 @@ export default function AppContext({ children }) {
 
   return (
     <ContextValue.Provider
-      value={{ checkAccountLoginIn, isLoading, setIsLoading, error, setError }}
+      value={{ checkAccountLogIn, isLoading, setIsLoading, error, setError }}
     >
       {children}
     </ContextValue.Provider>

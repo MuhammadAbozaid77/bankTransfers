@@ -1,12 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import useLogOut from "../../hooks/useLogOut";
 
 export default function LogoutButton() {
-  const navigate = useNavigate();
-
-  const handelLogout = () => {
-    localStorage.removeItem("bankTransfersAccount");
-    navigate("/login");
-  };
+  const { handelLogout } = useLogOut();
 
   return (
     <>

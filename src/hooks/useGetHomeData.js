@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { accountsTransfers } from "../accounts";
+import { accountsTransfers } from "../services/accountsTransfers";
 
 export default function useGetHomeData() {
   const pin = localStorage.getItem("bankTransfersAccount");

@@ -8,8 +8,12 @@ import Transfer from "../pages/Transfer";
 import Request from "../pages/Request";
 import Help from "../pages/Help";
 import Find from "../pages/Find";
+import Save from "../pages/Save";
+import useGetLocalStorage from "../hooks/useGetLocalStorage";
 
 export default function Navigations() {
+  const { isAuthenticated } = useGetLocalStorage();
+
   return (
     <HashRouter>
       <Routes>
@@ -21,14 +25,21 @@ export default function Navigations() {
             </ProtectedRouting>
           }
         >
-          <Route index element={<Navigate replace to={"home"} />} />
+          <Route index element={<Navigate replace to={"save"} />} />
           <Route path="home" element={<Home />} />
           <Route path="transfer" element={<Transfer />} />
           <Route path="request" element={<Request />} />
           <Route path="help" element={<Help />} />
           <Route path="find" element={<Find />} />
         </Route>
-        <Route path="login" element={<Login />} />
+
+        <Route
+          path="login"
+          element={
+            isAuthenticated ? <Navigate replace to={"/home"} /> : <Login />
+          }
+        />
+        <Route path="save" element={<Save />} />
       </Routes>
     </HashRouter>
   );
